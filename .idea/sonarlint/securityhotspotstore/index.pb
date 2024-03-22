@@ -41,3 +41,7 @@ Y
 )src/test/java/tests/PracticeFormTest.java,0/9/09cc5227261064d1f001061e03145897ba1f9d65
 Z
 *src/test/java/pages/PracticeFormsPage.java,4/4/445f59fc98e98b7a11dbecafc95a63e479218692
+b
+2src/test/java/propertyUtility/PropertyUtility.java,8/7/87c30ee47f1fa94a073494240634da3e6eaf4311
+\
+,src/test/java/ObjectData/WebTableObject.java,d/4/d42daf1cc8054232b9db26d49e46441edc8fb71c

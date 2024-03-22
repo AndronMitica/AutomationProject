@@ -1,15 +1,19 @@
 package tests;
 
+import ObjectData.WebTableObject;
 import org.testng.annotations.Test;
 import pages.ElementsPage;
 import pages.HomePage;
 import pages.WebTablePage;
+import propertyUtility.PropertyUtility;
 import sharedData.SharedData;
 
 public class WebTableTest extends SharedData {
 
     @Test
     public void metodaTest() {
+        PropertyUtility propertyUtility = new PropertyUtility("WebTableData");
+        WebTableObject webTableObject = new WebTableObject(propertyUtility.getAllData());
 
         HomePage homePage = new HomePage(getWebDriver());
         homePage.navigateToElementsPage();
@@ -17,18 +21,13 @@ public class WebTableTest extends SharedData {
         ElementsPage elementsPage = new ElementsPage(getWebDriver());
         elementsPage.navigateToWebTablePage();
 
-        String firstNameValue = "Mitica";
-        String lastNameValue = "Andron";
-        String emailFieldValue = "mitica@example.com";
-        String ageFieldValue = "27";
-        String salaryFieldValue = "2000";
-        String departmentFieldValue = "QA";
-        String firstNameModifyValue = "Titi";
-        String ageModifyFieldValue = "28";
-
         WebTablePage webTablePage = new WebTablePage(getWebDriver());
-        webTablePage.addNewEntry(firstNameValue, lastNameValue, emailFieldValue, ageFieldValue, salaryFieldValue, departmentFieldValue);
-        webTablePage.editEntry(firstNameModifyValue, ageModifyFieldValue);
+        webTablePage.addNewEntry(webTableObject);
+
+        webTableObject.setFirstNameValue("Titi");
+        webTableObject.setAgeFieldValue("28");
+
+        webTablePage.editEntry(webTableObject);
         webTablePage.deleteEntry();
     }
 }
