@@ -1,44 +1,24 @@
 package tests;
 
-import helperMethods.ElementMethods;
-import helperMethods.FrameMethods;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import pages.AlertWindowFramePage;
+import pages.FramePage;
+import pages.HomePage;
 import sharedData.SharedData;
 
 public class FrameTest extends SharedData {
 
+
     @Test
-    public void testMethod() {
-        ElementMethods elementMethods = new ElementMethods(getWebDriver());
-        FrameMethods frameMethods = new FrameMethods(getWebDriver());
+    public void frameMethod() {
 
-        elementMethods.scrollElementByPixel(0, 450);
+        HomePage homePage = new HomePage(getWebDriver());
+        homePage.navigateToAlertFrameWindowPage();
 
-        WebElement consentField = getWebDriver().findElement(By.className("fc-button-label"));
-        elementMethods.clickElement(consentField);
+        AlertWindowFramePage alertWindowFramePage = new AlertWindowFramePage(getWebDriver());
+        alertWindowFramePage.navigateToFramePage();
 
-        WebElement formsField = getWebDriver().findElement(By.xpath
-                ("//h5[text() ='Alerts, Frame & Windows']"));
-        elementMethods.clickElement(formsField);
-
-        elementMethods.scrollElementByPixel(0, 450);
-
-        WebElement frameFormField = getWebDriver().findElement(By.xpath("//span[text() ='Frames']"));
-        elementMethods.clickElement(frameFormField);
-
-        // interactionam cu un iframe
-        frameMethods.switchSpecificIframe("frame1");
-
-        WebElement frame1Element = getWebDriver().findElement(By.id("sampleHeading"));
-        elementMethods.printElementText(frame1Element);
-
-        // speficam sa revina la frameul curent
-        frameMethods.switchParentFrame();
-        frameMethods.switchSpecificIframe("frame2");
-
-        WebElement frame2Element = getWebDriver().findElement(By.id("sampleHeading"));
-        elementMethods.printElementText(frame2Element);
+        FramePage framePage = new FramePage(getWebDriver());
+        framePage.dealWithIFrame();
     }
 }

@@ -20,8 +20,8 @@ public class AlertsTest extends SharedData {
 
         AlertPage alertPage = new AlertPage(getWebDriver());
         alertPage.dealWithAcceptAlert();
-        alertPage.dealWithDellayAlert();
+        alertPage.dealWithDelayAlert();
         alertPage.dealWithPromtButton("test");
-        alertPage.dealWithConfrimButton();
+        alertPage.dealWithConfirmButton();
     }
 }

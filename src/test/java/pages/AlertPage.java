@@ -6,41 +6,41 @@ import org.openqa.selenium.support.FindBy;
 
 public class AlertPage extends BasePage {
 
-    @FindBy(id = "alertButton")
-    private WebElement alertOK;
-    @FindBy(id = "timerAlertButton")
-    private WebElement timerAlertButton;
-    @FindBy(id = "confirmButton")
-    private WebElement confirmButton;
-    @FindBy(id = "promtButton")
-    private WebElement promptAlertButton;
-    @FindBy(id = "confirmResult")
-    private WebElement confirmButtonResult;
-    @FindBy(id = "promptResult")
-    private WebElement promptResult;
     public AlertPage(WebDriver webDriver) {
         super(webDriver);
     }
+    @FindBy (id = "alertButton")
+    private WebElement alertOk;
+    @FindBy (id = "timerAlertButton")
+    private WebElement timerAlertButton;
+    @FindBy (id = "confirmButton")
+    private WebElement confirmButton;
+    @FindBy (id = "promtButton")
+    private WebElement promptAlertButton;
+    @FindBy (id = "confirmResult")
+    private WebElement confirmButtonResult;
+    @FindBy (id = "promptResult")
+    private WebElement promptResult;
 
-    public void dealWithAcceptAlert() {
-        elementMethods.clickElement(alertOK);
+    public void dealWithAcceptAlert () {
+        elementMethods.clickElement(alertOk);
         alertMethods.acceptAlert();
     }
 
-    public void dealWithDellayAlert() {
+    public void dealWithDelayAlert () {
         elementMethods.clickElement(timerAlertButton);
+        alertMethods.waitForAlert();
         alertMethods.acceptAlert();
     }
 
-    public void dealWithConfrimButton() {
+    public  void dealWithPromtButton (String text) {
+        elementMethods.clickElemForce(promptAlertButton);
+        alertMethods.fillAlert(text);
+        elementMethods.validateElementText(promptResult, "You entered " + text);
+    }
+
+    public void dealWithConfirmButton () {
         elementMethods.clickElement(confirmButton);
         alertMethods.cancelAlert();
-        elementMethods.validateElementText(confirmButtonResult, "You selected Cancel");
-    }
-
-    public void dealWithPromtButton(String value) {
-        elementMethods.clickElement(promptAlertButton);
-        alertMethods.fillAlert(value);
-        elementMethods.validateElementText(promptResult, "You entered " + value);
     }
 }
