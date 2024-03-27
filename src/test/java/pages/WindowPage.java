@@ -22,7 +22,7 @@ public class WindowPage extends BasePage{
     }
 
     public void interactNewWindow(){
-        elementMethods.clickElement(newWindowButton);
+        elementMethods.clickElemForce(newWindowButton);
         windowMethods.switchSpecificTabWindow(1);
         windowMethods.closeCurrentTabWindow();
         windowMethods.switchSpecificTabWindow(0);

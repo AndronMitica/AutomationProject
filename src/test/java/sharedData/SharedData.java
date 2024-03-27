@@ -14,7 +14,7 @@ public class SharedData {
 
     @BeforeMethod
     public void PrepareDriver() {
-        webDriver = new FirefoxDriver();
+        webDriver = new SafariDriver();
 
         webDriver.get("https://demoqa.com/");
 
